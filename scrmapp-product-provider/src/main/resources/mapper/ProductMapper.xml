@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaohei.study.scrmapp.mapper.ProductMapper">
+    <resultMap id="BaseResultMap" type="com.xiaohei.study.scrmapp.entity.Product">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="itemKind" jdbcType="VARCHAR" property="itemKind"/>
+        <result column="typeName" jdbcType="VARCHAR" property="typeName"/>
+        <result column="smallcName" jdbcType="VARCHAR" property="smallcName"/>
+        <result column="modelName" jdbcType="VARCHAR" property="modelName"/>
+        <result column="levelId" jdbcType="BIGINT" property="levelId"/>
+        <result column="levelName" jdbcType="VARCHAR" property="levelName"/>
+        <result column="productName" jdbcType="VARCHAR" property="productName"/>
+        <result column="productCode" jdbcType="VARCHAR" property="productCode"/>
+        <result column="productImage" jdbcType="VARCHAR" property="productImage"/>
+        <result column="productBarCode" jdbcType="VARCHAR" property="productBarCode"/>
+        <result column="barCodeImage" jdbcType="VARCHAR" property="barCodeImage"/>
+        <result column="shoppingOrder" jdbcType="VARCHAR" property="shoppingOrder"/>
+        <result column="saleType" jdbcType="INTEGER" property="saleType"/>
+        <result column="o2o" jdbcType="INTEGER" property="o2o"/>
+        <result column="buyChannel" jdbcType="INTEGER" property="buyChannel"/>
+        <result column="filterRemind" jdbcType="INTEGER" property="filterRemind"/>
+        <result column="userId" jdbcType="VARCHAR" property="userId"/>
+        <result column="buyTime" jdbcType="DATE" property="buyTime"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="createTime" jdbcType="DATE" property="createTime"/>
+    </resultMap>
+    
+    <sql id="Base_Column_List">
+	    id, itemKind, typeName, smallcName, modelName, levelId, levelName, productName, productCode, barCodeImage,
+	    productImage, productBarCode, shoppingOrder, saleType, o2o, buyChannel, filterRemind, 
+	    userId, buyTime, status, createTime
+	</sql>
+	
+    <select id="findById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        select
+        	<include refid="Base_Column_List"/>
+        from t_product
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+</mapper>
