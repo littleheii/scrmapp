@@ -22,10 +22,7 @@ public class ProductController {
     @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
     @ResponseBody
     public DataMessage getProduct(@PathVariable("id") Long productId) {
-        DataMessage dataMessage = new DataMessage();
-        Product product = productService.getProduct(productId);
-        dataMessage.setCode(ErrorCode.SUCCESS);
-        dataMessage.setData(product);
+        DataMessage dataMessage = productService.getProduct(productId);
         return dataMessage;
     }
 

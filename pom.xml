@@ -11,8 +11,11 @@
     <modules>
         <module>scrmapp-common</module>
         <module>scrmapp-order-api</module>
+        <module>scrmapp-order-provider</module>
         <module>scrmapp-product-api</module>
+        <module>scrmapp-product-provider</module>
         <module>scrmapp-user-api</module>
+        <module>scrmapp-user-provider</module>
         <module>scrmapp-wechat</module>
         <module>scrmapp-wechat-web</module>
     </modules>
