@@ -2,8 +2,10 @@ package com.xiaohei.study.scrmapp.service.impl;
 
 import com.alibaba.dubbo.config.annotation.Reference;
 import com.xiaohei.study.scrmapp.api.ProductApi;
+import com.xiaohei.study.scrmapp.config.RabbitConfig;
 import com.xiaohei.study.scrmapp.constant.ErrorCode;
 import com.xiaohei.study.scrmapp.entity.Product;
+import com.xiaohei.study.scrmapp.rabbitmq.Sender;
 import com.xiaohei.study.scrmapp.redis.ProductRedis;
 import com.xiaohei.study.scrmapp.result.DataMessage;
 import com.xiaohei.study.scrmapp.service.ProductService;
@@ -22,6 +24,9 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private ProductRedis productRedis;
 
+    @Autowired
+    private Sender sender;
+
     @Resource
     private HashOperations<String, String, Product> hashOperations;
 
@@ -38,6 +43,11 @@ public class ProductServiceImpl implements ProductService {
             }
             productRedis.put(productId, product, -1);
         }
+
+
+        sender.send("1000");
+        sender.direct("20000");
+
         dataMessage.setCode(ErrorCode.SUCCESS);
         dataMessage.setData(product);
 

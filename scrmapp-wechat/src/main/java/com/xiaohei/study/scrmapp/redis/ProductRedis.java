@@ -16,7 +16,7 @@ public class ProductRedis {
     @Resource
     private HashOperations<String, String, Product> hashOperations;
 
-    private static final String REDIS_KEY = "PRODUCT_REDIS_KEY";
+    private static final String REDIS_KEY = "PRODUCT:REDIS:KEY";
 
 
     /**
